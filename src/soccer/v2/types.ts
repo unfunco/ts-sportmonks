@@ -15,11 +15,11 @@
 export type Endpoint = keyof Endpoints
 
 export interface Endpoints {
-  'continents': Promise<Continent[]>
+  continents: Promise<Continent[]>
   'continents/{id}': Promise<Continent>
-  'countries': Promise<Country[]>
+  countries: Promise<Country[]>
   'countries/{id}': Promise<Country>
-  'livescores': Promise<Fixture[]>
+  livescores: Promise<Fixture[]>
 }
 
 export interface Continent {

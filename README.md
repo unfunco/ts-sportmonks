@@ -8,15 +8,19 @@
 
 ### Installation and usage
 
+```text
+@unfunco:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=<personal_access_token>
+```
+
 ```bash
-npm install -D @unfunco/ts-sportmonks
+npm install @unfunco/ts-sportmonks
 ```
 
 ```typescript
 import { SoccerClient } from '@unfunco/ts-sportmonks/soccer/v2'
-import { League } from './types'
 
-const apiToken = '...'
+const apiToken = 'super-secret-token'
 
 const soccer = new SoccerClient({ apiToken })
 const scores = soccer.getLiveScores()

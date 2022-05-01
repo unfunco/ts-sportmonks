@@ -13,13 +13,8 @@
 // limitations under the License.
 
 import { SportmonksClient } from '../../sportmonks'
-import { Continent, Country, Fixture } from './types'
 
 export class SoccerClient extends SportmonksClient {
-  getContinents = (): Promise<Continent[]> => this.get<Continent[]>('continents')
-  getCountries = (): Promise<Country[]> => this.get<Country[]>('countries')
-  getLiveScores = (): Promise<Fixture[]> => this.get<Fixture[]>('livescores')
-
   protected baseUrl(): string {
     return 'https://soccer.sportmonks.com/api/v2.0/'
   }

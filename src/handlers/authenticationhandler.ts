@@ -20,8 +20,7 @@ import {
 import { RequestOptions } from 'https'
 
 export class AuthenticationHandler implements IRequestHandler {
-  public constructor(private readonly apiToken: string) {
-  }
+  public constructor(private readonly apiToken: string) {}
 
   prepareRequest(options: RequestOptions): void {
     options.path += `?api_token=${encodeURIComponent(this.apiToken)}`

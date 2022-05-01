@@ -22,17 +22,14 @@ export interface ClientOptions {
 }
 
 export abstract class SportmonksClient {
-
   protected readonly rc: RestClient
 
   protected abstract baseUrl(): string
 
   constructor(protected readonly options: ClientOptions) {
-    this.rc = new RestClient(
-      options.userAgent,
-      this.baseUrl(),
-      [new AuthenticationHandler(this.options.apiToken)],
-    )
+    this.rc = new RestClient(options.userAgent, this.baseUrl(), [
+      new AuthenticationHandler(this.options.apiToken),
+    ])
   }
 
   get = async <T>(endpoint: Endpoint): Promise<T> => {

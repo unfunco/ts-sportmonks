@@ -48,12 +48,12 @@ export interface Fixture {
   commentaries: boolean
   attendance?: number
   weather: {
-    code: string
-    type: string
-    clouds: string
-    humidity: string
-    pressure: number
-    updated_at: string
+    code?: string
+    type?: string
+    clouds?: string
+    humidity?: string
+    pressure?: number
+    updated_at?: string
   }
   scores: {
     localteam_score: number

@@ -22,6 +22,10 @@ describe('AuthenticationHandler', () => {
   })
 
   it('cannot handle authentication', () => {
+    expect(authenticationHandler.canHandleAuthentication()).toBe(false)
+  })
+
+  it('should append the API token to the URL', () => {
     const options = { path: '/testing' }
     authenticationHandler.prepareRequest(options)
     expect(options.path).toBe('/testing?api_token=super-secret-token')

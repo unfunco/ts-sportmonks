@@ -20,10 +20,12 @@ npm install @unfunco/ts-sportmonks
 ```typescript
 import { SoccerClient } from '@unfunco/ts-sportmonks/soccer/v2'
 
-const apiToken = 'super-secret-token'
+void (async (): Promise<void> => {
+  const apiToken = 'super-secret-token'
 
-const soccer = new SoccerClient({ apiToken })
-const scores = soccer.get<Fixture[]>('livescores')
+  const soccer = new SoccerClient({ apiToken })
+  const scores = await soccer.get<Fixture[]>('livescores')
+})()
 ```
 
 ## License

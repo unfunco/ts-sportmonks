@@ -1,5 +1,7 @@
 # 🧘🏽‍♂️ Sportmonks API client
 
+A simple TypeScript API client for [Sportmonks].
+
 ## Getting started
 
 ### Requirements
@@ -7,6 +9,9 @@
 * [Node.js] 16+
 
 ### Installation and usage
+
+Since the package is currently private, it cannot be installed without a
+[GitHub personal access token] and the following `npmrc` configuration.
 
 ```text
 @unfunco:registry=https://npm.pkg.github.com
@@ -23,6 +28,7 @@ import { SoccerClient, Fixture } from '@unfunco/ts-sportmonks/soccer/v2'
 (async () => {
   const soccer = new SoccerClient({ apiToken: 'super-secret-token' })
   const scores = await soccer.get<Fixture[]>('livescores')
+  // ...
 })()
 ```
 
@@ -32,4 +38,6 @@ import { SoccerClient, Fixture } from '@unfunco/ts-sportmonks/soccer/v2'
 Made available under the terms of the [Apache License 2.0](LICENSE.md).
 
 [Daniel Morris]: https://unfun.co
+[GitHub personal access token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 [Node.js]: https://nodejs.org
+[Sportmonks]: https://www.sportmonks.com

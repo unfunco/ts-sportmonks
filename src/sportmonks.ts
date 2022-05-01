@@ -27,7 +27,7 @@ export abstract class SportmonksClient {
   protected abstract baseUrl(): string
 
   constructor(protected readonly options: ClientOptions) {
-    this.rc = new RestClient(options.userAgent, this.baseUrl(), [
+    this.rc = new RestClient(this.options.userAgent, this.baseUrl(), [
       new AuthenticationHandler(this.options.apiToken),
     ])
   }

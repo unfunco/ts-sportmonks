@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "lib": [
+      "ES2021"
+    ],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "build"
+  },
+  "include": [
+    "src"
+  ]
+}

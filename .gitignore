@@ -1,0 +1,16 @@
+*.log
+*.tsbuildinfo
+.npm/
+.pnp.*
+.pnpm-debug.log*
+.yarn-integrity
+.yarn/build-state.yml
+.yarn/cache
+.yarn/install-state.gz
+.yarn/unplugged
+/build/
+lerna-debug.log*
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

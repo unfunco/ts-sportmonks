@@ -1,0 +1,37 @@
+{
+  "dependencies": {
+    "typed-rest-client": "^1.8.6"
+  },
+  "description": "Sportmonks API client library for TypeScript.",
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "eslint": "^8.14.0",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "homepage": "https://github.com/unfunco/ts-sportmonks",
+  "keywords": [
+    "client",
+    "football",
+    "javascript",
+    "sportmonks",
+    "soccer",
+    "typescript"
+  ],
+  "name": "@unfunco/ts-sportmonks",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --ext .ts .",
+    "lint:fix": "eslint --ext .ts --fix .",
+    "prettier": "",
+    "test": "jest"
+  },
+  "version": "0.1.0"
+}

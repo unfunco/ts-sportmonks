@@ -23,7 +23,7 @@ import { SoccerClient } from '@unfunco/ts-sportmonks/soccer/v2'
 const apiToken = 'super-secret-token'
 
 const soccer = new SoccerClient({ apiToken })
-const scores = soccer.getLiveScores()
+const scores = soccer.get<Fixture[]>('livescores')
 ```
 
 ## License

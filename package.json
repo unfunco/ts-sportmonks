@@ -4,13 +4,14 @@
   },
   "description": "Sportmonks API client library for TypeScript.",
   "devDependencies": {
-    "@types/node": "^16.11.7",
     "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
     "eslint": "^8.14.0",
     "jest": "^27.5.1",
     "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
     "ts-jest": "^27.1.4",
     "typescript": "^4.6.3"
   },
@@ -26,13 +27,16 @@
     "soccer",
     "typescript"
   ],
+  "main": "dist/index.js",
   "name": "@unfunco/ts-sportmonks",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run clean && tsc",
+    "clean": "rimraf dist",
     "lint": "eslint --ext .ts .",
     "lint:fix": "eslint --ext .ts --fix .",
     "prettier": "prettier --write './**/*.{ts,tsx,js,jsx,css}'",
     "test": "jest"
   },
+  "types": "dist/index.d.ts",
   "version": "0.1.0"
 }

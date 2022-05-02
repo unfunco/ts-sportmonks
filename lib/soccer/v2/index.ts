@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { SportmonksClient } from '../..'
+import { SportmonksClient } from '../../'
 
 export class SoccerClient extends SportmonksClient {
   protected baseUrl(): string {
@@ -20,7 +20,7 @@ export class SoccerClient extends SportmonksClient {
   }
 }
 
-export interface Endpoints {
+export interface SoccerEndpoints {
   '/continents': Promise<Continent[]>
   '/continents/{id}': Promise<Continent>
   '/countries': Promise<Country[]>

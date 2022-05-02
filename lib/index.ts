@@ -19,7 +19,7 @@ import {
 } from 'typed-rest-client/Interfaces'
 import { RequestOptions } from 'https'
 
-import { Endpoints as SoccerEndpoints } from './soccer/v2'
+import { SoccerEndpoints } from './soccer/v2'
 
 type Endpoints = SoccerEndpoints
 
@@ -54,12 +54,11 @@ export abstract class SportmonksClient {
     ])
   }
 
-  get = async <TEndpoint extends keyof Endpoints>(
+  get = async <T, TEndpoint extends keyof Endpoints>(
     endpoint: TEndpoint,
-    ...params: EndpointParameter<TEndpoint>
-  ): Promise<{ data: TEndpoint } | null> => {
-    console.log(params)
-    const response = await this.rc.get<{ data: TEndpoint }>(endpoint)
-    return response.result
+    ..._params: EndpointParameter<TEndpoint>
+  ): Promise<T> => {
+    const response = await this.rc.get<{ data: T }>(endpoint)
+    return response.result.data
   }
 }

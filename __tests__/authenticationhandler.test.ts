@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { AuthenticationHandler } from '..'
+import { AuthenticationHandler } from '../lib'
 
 describe('AuthenticationHandler', () => {
   let authenticationHandler: AuthenticationHandler

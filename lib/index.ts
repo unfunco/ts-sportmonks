@@ -54,11 +54,11 @@ export abstract class SportmonksClient {
     ])
   }
 
-  get = async <T, TEndpoint extends keyof Endpoints>(
+  get = async <TEndpoint extends keyof Endpoints>(
     endpoint: TEndpoint,
     ..._params: EndpointParameter<TEndpoint>
-  ): Promise<T> => {
-    const response = await this.rc.get<{ data: T }>(endpoint)
+  ): Promise<Endpoints[TEndpoint]> => {
+    const response = await this.rc.get<{ data: Endpoints[TEndpoint] }>(endpoint)
     return response.result.data
   }
 }

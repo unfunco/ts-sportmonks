@@ -21,11 +21,11 @@ export class SoccerClient extends SportmonksClient {
 }
 
 export interface SoccerEndpoints {
-  '/continents': Promise<Continent[]>
-  '/continents/{id}': Promise<Continent>
-  '/countries': Promise<Country[]>
-  '/countries/{id}': Promise<Country>
-  '/livescores': Promise<Fixture[]>
+  '/continents': Continent[]
+  '/continents/{id}': Continent
+  '/countries': Country[]
+  '/countries/{id}': Country
+  '/livescores': Fixture[]
 }
 
 export interface Continent {

@@ -1,6 +1,6 @@
 # 🧘🏽‍♂️ Sportmonks API client
 
-A simple TypeScript API client for [Sportmonks].
+A small and simple [Sportmonks] API client library written in TypeScript.
 
 ## Getting started
 
@@ -23,9 +23,9 @@ npm install @unfunco/ts-sportmonks
 ```
 
 ```typescript
-import { SoccerClient, Fixture } from '@unfunco/ts-sportmonks/soccer/v2'
+import { SoccerClient, Fixture } from '@unfunco/ts-sportmonks'
 
-(async () => {
+void (async () => {
   const soccer = new SoccerClient({ apiToken: 'super-secret-token' })
   const scores = await soccer.get<Fixture[]>('livescores')
   // ...

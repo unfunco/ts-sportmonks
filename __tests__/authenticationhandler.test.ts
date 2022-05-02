@@ -12,21 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {
-  IHttpClientResponse,
-  IRequestHandler,
-} from 'typed-rest-client/Interfaces'
+import { AuthenticationHandler } from '..'
 
-import { RequestOptions } from 'https'
+describe('AuthenticationHandler', () => {
+  let authenticationHandler: AuthenticationHandler
 
-export class AuthenticationHandler implements IRequestHandler {
-  public constructor(private readonly apiToken: string) {}
+  beforeEach(() => {
+    authenticationHandler = new AuthenticationHandler('super-secret-token')
+  })
 
-  prepareRequest(options: RequestOptions): void {
-    options.path += `?api_token=${encodeURIComponent(this.apiToken)}`
-  }
+  it('cannot handle authentication', () => {
+    expect(authenticationHandler.canHandleAuthentication()).toBe(false)
+  })
 
-  canHandleAuthentication = (): boolean => false
-
-  handleAuthentication = (): Promise<IHttpClientResponse> => null
-}
+  it('should append the API token to the URL', () => {
+    const options = { path: '/testing' }
+    authenticationHandler.prepareRequest(options)
+    expect(options.path).toBe('/testing?api_token=super-secret-token')
+  })
+})

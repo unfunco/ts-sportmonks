@@ -30,7 +30,7 @@
   "main": "dist/index.js",
   "name": "@unfunco/ts-sportmonks",
   "scripts": {
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && tsc && cp {CHANGELOG,LICENSE,README}.md package.json dist/",
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts .",
     "lint:fix": "eslint --ext .ts --fix .",

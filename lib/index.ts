@@ -13,12 +13,34 @@
 // limitations under the License.
 
 import { RestClient } from 'typed-rest-client'
-import { AuthenticationHandler } from './handlers/authenticationhandler'
-import { Endpoint } from './soccer/v2/types'
+import {
+  IHttpClientResponse,
+  IRequestHandler,
+} from 'typed-rest-client/Interfaces'
+import { RequestOptions } from 'https'
+
+import { Endpoints as SoccerEndpoints } from './soccer/v2'
+
+type Endpoints = SoccerEndpoints
 
 export interface ClientOptions {
   apiToken: string
   userAgent?: string
+}
+
+type EndpointParameter<TEndpoint extends string> =
+  TEndpoint extends `${infer Head}/{${infer Param}}` ? [id: number] : []
+
+export class AuthenticationHandler implements IRequestHandler {
+  public constructor(private readonly apiToken: string) {}
+
+  prepareRequest(options: RequestOptions): void {
+    options.path += `?api_token=${encodeURIComponent(this.apiToken)}`
+  }
+
+  canHandleAuthentication = (): boolean => false
+
+  handleAuthentication = (): Promise<IHttpClientResponse> => null
 }
 
 export abstract class SportmonksClient {
@@ -32,8 +54,12 @@ export abstract class SportmonksClient {
     ])
   }
 
-  get = async <T>(endpoint: Endpoint): Promise<T> => {
-    const response = await this.rc.get<{ data: T }>(endpoint)
-    return response.result.data
+  get = async <TEndpoint extends keyof Endpoints>(
+    endpoint: TEndpoint,
+    ...params: EndpointParameter<TEndpoint>
+  ): Promise<{ data: TEndpoint } | null> => {
+    console.log(params)
+    const response = await this.rc.get<{ data: TEndpoint }>(endpoint)
+    return response.result
   }
 }

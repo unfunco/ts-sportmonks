@@ -12,14 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export type Endpoint = keyof Endpoints
+import { SportmonksClient } from '../..'
+
+export class SoccerClient extends SportmonksClient {
+  protected baseUrl(): string {
+    return 'https://soccer.sportmonks.com/api/v2.0'
+  }
+}
 
 export interface Endpoints {
-  continents: Promise<Continent[]>
-  'continents/{id}': Promise<Continent>
-  countries: Promise<Country[]>
-  'countries/{id}': Promise<Country>
-  livescores: Promise<Fixture[]>
+  '/continents': Promise<Continent[]>
+  '/continents/{id}': Promise<Continent>
+  '/countries': Promise<Country[]>
+  '/countries/{id}': Promise<Country>
+  '/livescores': Promise<Fixture[]>
 }
 
 export interface Continent {

@@ -9,18 +9,14 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": "lib",
     "sourceMap": true,
-    "strict": true,
-    "target": "ES2021"
+    "target": "ES2021",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
-  "exclude": [
-    ".github",
-    "dist",
-    "node_modules",
-    "**/__tests__/*"
-  ],
-  "include": [
-    "src"
+  "files": [
+    "lib/index.ts"
   ]
 }

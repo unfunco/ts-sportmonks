@@ -9,7 +9,7 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "outDir": "dist",
-    "rootDir": "lib",
+    "rootDir": "src",
     "sourceMap": true,
     "target": "ES2021",
     "typeRoots": [
@@ -17,6 +17,6 @@
     ]
   },
   "files": [
-    "lib/index.ts"
+    "src/index.ts"
   ]
 }

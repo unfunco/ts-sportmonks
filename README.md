@@ -3,7 +3,8 @@
 [Sportmonks] API client library written in TypeScript. It's nowhere near ready
 for production usage yet, it's very buggy and has no error handling, and only
 implements a subset of the available endpoints in the soccer API, other sports
-are not yet supported.
+are not yet supported. It's very much a prototype and an experiment with
+TypeScript's type-system.
 
 ## Getting started
 

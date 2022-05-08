@@ -1,22 +1,18 @@
 # 🧘🏽‍♂️ Sportmonks API client
 
-[Sportmonks] API client library written in TypeScript.
+[Sportmonks] API client library written in TypeScript. It's nowhere near ready
+for production usage yet, it's very buggy and has no error handling, and only
+implements a subset of the available endpoints in the soccer API, other sports
+are not yet supported.
 
 ## Getting started
 
 ### Requirements
 
 * [Node.js] 16+
+* [Sportmonks] credentials
 
 ### Installation and usage
-
-Since the package is currently private, it cannot be installed without a
-[GitHub personal access token] and the following `npmrc` configuration.
-
-```text
-@unfunco:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=<personal_access_token>
-```
 
 ```bash
 npm install @unfunco/ts-sportmonks
@@ -26,8 +22,8 @@ npm install @unfunco/ts-sportmonks
 import { SoccerClient } from '@unfunco/ts-sportmonks/soccer/v2'
 
 void (async () => {
-  const soccer = new SoccerClient({ apiToken: '12345' })
-  const europe = await soccer.get('/continents/{id}', 1)
+  const soccer = new SoccerClient({ apiToken: 'secret-api-token' })
+  const scores = await soccer.get('/livescores')
   // ...
 })()
 ```

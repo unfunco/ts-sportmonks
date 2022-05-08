@@ -13,15 +13,11 @@
 // limitations under the License.
 
 import { RestClient } from 'typed-rest-client'
-import {
-  IHttpClientResponse,
-  IRequestHandler,
-} from 'typed-rest-client/Interfaces'
-import { RequestOptions } from 'https'
 
 import { SoccerEndpoints } from './soccer/v2'
+import { interpolateEndpoint } from './util'
 
-type Endpoints = SoccerEndpoints
+export type Endpoints = SoccerEndpoints
 
 export interface ClientOptions {
   apiToken: string
@@ -31,34 +27,27 @@ export interface ClientOptions {
 type EndpointParameter<TEndpoint extends string> =
   TEndpoint extends `${infer Head}/{${infer Param}}` ? [id: number] : []
 
-export class AuthenticationHandler implements IRequestHandler {
-  public constructor(private readonly apiToken: string) {}
-
-  prepareRequest(options: RequestOptions): void {
-    options.path += `?api_token=${encodeURIComponent(this.apiToken)}`
-  }
-
-  canHandleAuthentication = (): boolean => false
-
-  handleAuthentication = (): Promise<IHttpClientResponse> => null
-}
-
 export abstract class SportmonksClient {
   protected readonly rc: RestClient
 
-  protected abstract baseUrl(): string
+  protected abstract getBaseUrl(): string
+
+  protected abstract getApiPath(): string
 
   constructor(protected readonly options: ClientOptions) {
-    this.rc = new RestClient(this.options.userAgent, this.baseUrl(), [
-      new AuthenticationHandler(this.options.apiToken),
-    ])
+    this.rc = new RestClient(this.options.userAgent, this.getBaseUrl())
   }
 
   get = async <TEndpoint extends keyof Endpoints>(
     endpoint: TEndpoint,
-    ..._params: EndpointParameter<TEndpoint>
+    ...params: EndpointParameter<TEndpoint>
   ): Promise<Endpoints[TEndpoint]> => {
-    const response = await this.rc.get<{ data: Endpoints[TEndpoint] }>(endpoint)
+    const interpolatedEndpoint = interpolateEndpoint(endpoint, params)
+    const response = await this.rc.get<{ data: Endpoints[TEndpoint] }>(
+      this.getApiPath() + interpolatedEndpoint,
+      { queryParameters: { params: { api_token: this.options.apiToken } } },
+    )
+
     return response.result.data
   }
 }

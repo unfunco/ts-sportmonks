@@ -15,8 +15,12 @@
 import { SportmonksClient } from '../../'
 
 export class SoccerClient extends SportmonksClient {
-  protected baseUrl(): string {
-    return 'https://soccer.sportmonks.com/api/v2.0'
+  protected getBaseUrl(): string {
+    return 'https://soccer.sportmonks.com'
+  }
+
+  protected getApiPath(): string {
+    return '/api/v2.0'
   }
 }
 

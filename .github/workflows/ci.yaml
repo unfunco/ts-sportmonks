@@ -10,6 +10,7 @@ on:
     - .eslintrc
     - .gitignore
     - .prettierrc.json
+    - CHANGELOG.md
     - LICENSE.md
     - README.md
   push:
@@ -21,6 +22,7 @@ on:
     - .eslintrc
     - .gitignore
     - .prettierrc.json
+    - CHANGELOG.md
     - LICENSE.md
     - README.md
 
@@ -36,7 +38,7 @@ jobs:
       with:
         node-version: 16
     - name: Install dependencies
-      run: npm install
+      run: npm ci
     - name: Lint sources
       run: npm run lint
     - name: Run tests

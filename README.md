@@ -1,6 +1,6 @@
 # 🧘🏽‍♂️ Sportmonks API client
 
-A small and simple [Sportmonks] API client library written in TypeScript.
+[Sportmonks] API client library written in TypeScript.
 
 ## Getting started
 

@@ -28,16 +28,15 @@
     "soccer",
     "typescript"
   ],
-  "main": "dist/index.js",
   "name": "@unfunco/ts-sportmonks",
   "scripts": {
     "build": "npm run clean && tsc && cp {CHANGELOG,LICENSE,README}.md package.json dist/",
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts .",
     "lint:fix": "eslint --ext .ts --fix .",
+    "prepack": "npm run build",
     "prettier": "prettier --write './**/*.{ts,tsx,js,jsx,css}'",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
-  "types": "dist/index.d.ts",
   "version": "0.1.1"
 }

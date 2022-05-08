@@ -1,12 +1,16 @@
+*.tgz
 .editorconfig
 .eslintignore
 .eslintrc
 .git/
 .github/
 .gitignore
+.idea/
 .npmignore
 .prettierrc.json
+.vscode/
 __tests__
 build/
 jest.config.js
 node_modules/
+test.ts

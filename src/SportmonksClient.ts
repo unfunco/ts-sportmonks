@@ -23,7 +23,7 @@ const interpolateEndpoint = (
   endpoint: keyof Endpoints,
   params: { [k: string]: any },
 ): string => {
-  return endpoint.replace('{id}', params[0])
+  return endpoint.replace('{id}', params[0] ?? '')
 }
 
 export abstract class SportmonksClient {

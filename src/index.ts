@@ -41,9 +41,7 @@ export abstract class SportmonksClient {
 
   protected abstract getApiPath(): string
 
-  constructor(
-    protected readonly options: ClientOptions,
-  ) {
+  constructor(protected readonly options: ClientOptions) {
     this.rc = new RestClient(this.options.userAgent, this.getBaseUrl())
   }
 

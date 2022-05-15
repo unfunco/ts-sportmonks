@@ -23,9 +23,9 @@ export interface ClientOptions {
 }
 
 type EndpointOptions<TEndpoint extends string> =
-  TEndpoint extends `${infer Head}/{${infer Param}}/${infer Tail}`
-  ? { id: number }
-  : {}
+  TEndpoint extends `${infer Head}/{${infer Param}}`
+  ? [id: number]
+  : []
 
 const interpolateEndpoint = (
   endpoint: keyof Endpoints,

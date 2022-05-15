@@ -6,22 +6,17 @@ on:
     - main
     paths-ignore:
     - .editorconfig
-    - .eslintignore
-    - .eslintrc
     - .gitignore
-    - .prettierrc.json
     - CHANGELOG.md
     - LICENSE.md
     - README.md
+
   push:
     branches:
     - main
     paths-ignore:
     - .editorconfig
-    - .eslintignore
-    - .eslintrc
     - .gitignore
-    - .prettierrc.json
     - CHANGELOG.md
     - LICENSE.md
     - README.md
@@ -41,5 +36,3 @@ jobs:
       run: npm ci
     - name: Lint sources
       run: npm run lint
-    - name: Run tests
-      run: npm run test

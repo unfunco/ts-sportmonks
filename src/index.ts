@@ -22,8 +22,10 @@ export interface ClientOptions {
   userAgent?: string
 }
 
-type EndpointParameter<TEndpoint extends string> =
-  TEndpoint extends `${infer Head}/{${infer Param}}` ? [id: number] : []
+type EndpointParameters<TEndpoint extends string> =
+  TEndpoint extends `${infer Head}/{${infer Param}}/${infer Tail}`
+  ? [id: number]
+  : []
 
 const interpolateEndpoint = (
   endpoint: keyof Endpoints,
@@ -43,11 +45,11 @@ export abstract class SportmonksClient {
     this.rc = new RestClient(this.options.userAgent, this.getBaseUrl())
   }
 
-  get = async <TEndpoint extends keyof Endpoints>(
+  get = async <TEndpoint extends keyof Endpoints, TIncludes>(
     endpoint: TEndpoint,
-    ...params: EndpointParameter<TEndpoint>
+    options?: EndpointParameters<TEndpoint>,
   ): Promise<Endpoints[TEndpoint]> => {
-    const interpolatedEndpoint = interpolateEndpoint(endpoint, params)
+    const interpolatedEndpoint = interpolateEndpoint(endpoint, options)
     const response = await this.rc.get<{ data: Endpoints[TEndpoint] }>(
       this.getApiPath() + interpolatedEndpoint,
       { queryParameters: { params: { api_token: this.options.apiToken } } },

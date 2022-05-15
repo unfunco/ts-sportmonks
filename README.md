@@ -20,7 +20,7 @@ npm install @unfunco/ts-sportmonks
 ```
 
 ```typescript
-import { SoccerClient } from '@unfunco/ts-sportmonks/soccer/v2'
+import { SoccerClient } from '@unfunco/ts-sportmonks'
 
 void (async () => {
   const soccer = new SoccerClient({ apiToken: 'secret-api-token' })

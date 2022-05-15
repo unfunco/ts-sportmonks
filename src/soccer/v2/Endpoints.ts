@@ -12,8 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export * from './ClientOptions'
-export * from './Endpoints'
-export * from './SportmonksClient'
-export * from './soccer/v2/Endpoints'
-export * from './soccer/v2/SoccerClient'
+import { Continent, Country, Fixture, League, Season } from './SoccerClient'
+
+export interface SoccerEndpoints {
+  '/continents': Continent[]
+  '/continents/{id}': Continent
+  '/countries': Country[]
+  '/countries/{id}': Country
+  '/leagues': League[]
+  '/leagues/{id}': League
+  '/livescores': Fixture[]
+  '/seasons': Season[]
+  '/seasons/{id}': Season
+}

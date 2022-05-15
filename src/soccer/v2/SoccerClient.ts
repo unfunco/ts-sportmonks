@@ -24,18 +24,6 @@ export class SoccerClient extends SportmonksClient {
   }
 }
 
-export interface SoccerEndpoints {
-  '/continents': Continent[]
-  '/continents/{id}': Continent
-  '/countries': Country[]
-  '/countries/{id}': Country
-  '/leagues': League[]
-  '/leagues/{id}': League
-  '/livescores': Fixture[]
-  '/seasons': Season[]
-  '/seasons/{id}': Season
-}
-
 export interface Continent {
   id: number
   name: string

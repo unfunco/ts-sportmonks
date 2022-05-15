@@ -12,8 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export * from './ClientOptions'
-export * from './Endpoints'
-export * from './SportmonksClient'
-export * from './soccer/v2/Endpoints'
-export * from './soccer/v2/SoccerClient'
+export interface ClientOptions {
+  apiToken: string
+  userAgent?: string
+}

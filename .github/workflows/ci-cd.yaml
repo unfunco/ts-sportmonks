@@ -1,4 +1,4 @@
-name: CI
+name: CI / CD
 
 on:
   pull_request:
@@ -31,8 +31,30 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
+        cache: npm
         node-version: 16
     - name: Install dependencies
       run: npm ci
     - name: Lint sources
       run: npm run lint
+
+  publish:
+    if: ${{ github.event_name == 'push' }}
+    name: Publish
+    needs: [ verify ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        cache: npm
+        node-version: 16
+    - name: Build the package
+      run: npm run build
+    - name: Release the package
+      env:
+        GITHUB_TOKEN: ${{ secrets.DAVID_LETTERMAN_GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.DANIEL_MORRIS_NPM_TOKEN }}
+      run: npx semantic-release

@@ -9,7 +9,7 @@
 .yarn/cache
 .yarn/install-state.gz
 .yarn/unplugged
-/dist/
+/pkg/
 lerna-debug.log*
 node_modules/
 npm-debug.log*

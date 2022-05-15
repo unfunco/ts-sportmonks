@@ -17,9 +17,7 @@ import { Endpoints } from './Endpoints'
 import { ClientOptions } from './ClientOptions'
 
 type EndpointOptions<TEndpoint extends string> =
-  TEndpoint extends `${infer Head}/{${infer Param}}`
-  ? [id: number]
-  : []
+  TEndpoint extends `${infer Head}/{${infer Param}}` ? [id: number] : []
 
 const interpolateEndpoint = (
   endpoint: keyof Endpoints,

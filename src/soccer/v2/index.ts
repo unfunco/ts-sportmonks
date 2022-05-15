@@ -29,7 +29,11 @@ export interface SoccerEndpoints {
   '/continents/{id}': Continent
   '/countries': Country[]
   '/countries/{id}': Country
+  '/leagues': League[]
+  '/leagues/{id}': League
   '/livescores': Fixture[]
+  '/seasons': Season[]
+  '/seasons/{id}': Season
 }
 
 export interface Continent {
@@ -40,6 +44,18 @@ export interface Continent {
 export interface Country {
   id: number
   name: string
+  image_path: string
+  extra: {
+    continent: string
+    sub_region: string
+    world_region: string
+    fifa: string
+    iso: string
+    iso2: string
+    longitude: string
+    latitude: string
+    flag: string
+  }
 }
 
 export interface Fixture {
@@ -83,4 +99,35 @@ export interface Fixture {
     extra_minute?: number
     injury_time?: number
   }
+}
+
+export interface League {
+  id: number
+  active: boolean
+  type: string
+  legacy_id?: number
+  country_id?: number
+  logo_path?: string
+  name: string
+  is_cup: boolean
+  is_friendly: boolean
+  current_season_id?: number
+  current_round_id?: number
+  current_stage_id?: number
+  live_standings: boolean
+  coverage: {
+    predictions: boolean
+    topscorer_goals: boolean
+    topscorer_assists: boolean
+    topscorer_cards: boolean
+  }
+}
+
+export interface Season {
+  id: number
+  name: string
+  league_id: number
+  is_current_season: boolean
+  current_round_id?: number
+  current_stage_id?: number
 }
